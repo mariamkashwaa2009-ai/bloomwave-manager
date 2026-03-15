@@ -42,4 +42,42 @@ This project is built using modern web technologies to ensure scalability and ma
 These technologies provide fast performance, modular architecture, and a strong foundation for further development.
 
 
+## Installation
 
+Clone the repository:
+
+git clone https://github.com/yourusername/yourrepo.git
+
+Navigate to the project folder:
+
+cd yourrepo
+
+Install dependencies:
+
+npm install
+
+Start the development server:
+
+npm run dev
+
+## Deployment
+
+This project can be deployed easily using Vercel.
+
+Steps:
+
+1. Push the project to a GitHub repository.
+2. Go to https://vercel.com
+3. Import the GitHub repository.
+4. Vercel will automatically detect the framework settings.
+5. Click **Deploy**.
+
+Once deployed, you can connect a custom domain from your domain provider (such as Hostinger) through the Vercel dashboard.
+
+## Contributing
+
+Contributions are welcome. If you would like to improve this project, feel free to open a pull request or submit an issue.
+
+## License
+
+This project is licensed under the MIT License.
