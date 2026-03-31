@@ -336,24 +336,13 @@ const ToolSection = () => {
               <motion.div key="s4" variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.3 }}>
                 <div className="space-y-6">
                   {/* Seed */}
-                  <div className={`bg-card rounded-xl p-6 shadow-card border ${verifySeed.trim() ? "border-emerald-300 bg-emerald-50/50 dark:bg-emerald-950/20" : "border-border/50"} flex items-center justify-between`}>
+                  <div className="bg-card rounded-xl p-6 shadow-card border border-border/50 flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-foreground flex items-center gap-2">
-                        {verifySeed.trim() ? (
-                          <>
-                            <Check className="w-4 h-4 text-emerald-600" />
-                            Verified with Seed
-                          </>
-                        ) : (
-                          "Fairness Verification Seed"
-                        )}
-                      </p>
+                      <p className="text-sm font-medium text-foreground">Fairness Verification Seed</p>
                       <p className="text-2xl font-mono font-bold gradient-text">{seed}</p>
-                      {verifySeed.trim() && (
-                        <p className="text-xs text-emerald-600 mt-1">
-                          This distribution was reproduced using the provided seed — results are identical.
-                        </p>
-                      )}
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Share this seed so others can verify the distribution in the Verify section below.
+                      </p>
                     </div>
                     <Button variant="outline" size="sm" onClick={copySeed}>
                       <Copy className="w-4 h-4" />
