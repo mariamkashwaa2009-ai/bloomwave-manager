@@ -110,22 +110,27 @@ const ToolSection = () => {
   };
 
   const distribute = () => {
-    const s = Math.floor(Math.random() * 2147483646) + 1;
+    const s = verifySeed.trim()
+      ? parseInt(verifySeed.trim())
+      : Math.floor(Math.random() * 2147483646) + 1;
+    
+    if (verifySeed.trim() && (isNaN(s) || s < 1)) {
+      setErrors(["Invalid seed. Please enter a positive number."]);
+      return;
+    }
+    
     setSeed(s);
 
     const shuffled = seededShuffle(participants, s);
 
-    // Sort blooms by difficulty descending
     const indexed = bloomData.map((b, i) => ({ ...b, origIndex: i }));
     indexed.sort((a, b) => difficultyWeight[b.difficulty] - difficultyWeight[a.difficulty]);
 
-    // Calculate group sizes: distribute participants as evenly as possible
     const n = shuffled.length;
     const w = wavesNum;
     const baseSize = Math.floor(n / w);
     const remainder = n % w;
 
-    // Assign larger groups to harder goals
     const groupSizes = indexed.map((_, i) => baseSize + (i < remainder ? 1 : 0));
 
     let offset = 0;
