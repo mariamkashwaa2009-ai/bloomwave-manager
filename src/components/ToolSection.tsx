@@ -327,6 +327,24 @@ const ToolSection = () => {
                       </div>
                     ))}
                   </div>
+                  
+                  {/* Verification Seed */}
+                  <div className="mt-6 p-4 bg-secondary/30 rounded-lg border border-border/50">
+                    <div className="flex items-center gap-2 mb-2">
+                      <AlertCircle className="w-4 h-4 text-primary" />
+                      <label className="text-sm font-medium text-foreground">Verification Seed (optional)</label>
+                    </div>
+                    <p className="text-xs text-muted-foreground mb-3">
+                      Enter a seed from a previous distribution to verify its fairness. Leave empty for a new random distribution.
+                    </p>
+                    <Input
+                      type="number"
+                      placeholder="e.g. 1234567890"
+                      value={verifySeed}
+                      onChange={e => setVerifySeed(e.target.value)}
+                      className="font-mono"
+                    />
+                  </div>
                 </div>
               </motion.div>
             )}
