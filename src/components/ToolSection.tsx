@@ -53,7 +53,7 @@ const ToolSection = () => {
   const [results, setResults] = useState<WaveResult[]>([]);
   const [seed, setSeed] = useState(0);
   const [errors, setErrors] = useState<string[]>([]);
-  const [verifySeed, setVerifySeed] = useState("");
+  
 
   const wavesNum = parseInt(waves) || 0;
   const bloomsNum = parseInt(blooms) || 0;
@@ -110,14 +110,7 @@ const ToolSection = () => {
   };
 
   const distribute = () => {
-    const s = verifySeed.trim()
-      ? parseInt(verifySeed.trim())
-      : Math.floor(Math.random() * 2147483646) + 1;
-    
-    if (verifySeed.trim() && (isNaN(s) || s < 1)) {
-      setErrors(["Invalid seed. Please enter a positive number."]);
-      return;
-    }
+    const s = Math.floor(Math.random() * 2147483646) + 1;
     
     setSeed(s);
 
@@ -157,7 +150,7 @@ const ToolSection = () => {
     setResults([]);
     setSeed(0);
     setErrors([]);
-    setVerifySeed("");
+    
   };
 
   const copySeed = () => {
@@ -328,23 +321,6 @@ const ToolSection = () => {
                     ))}
                   </div>
                   
-                  {/* Verification Seed */}
-                  <div className="mt-6 p-4 bg-secondary/30 rounded-lg border border-border/50">
-                    <div className="flex items-center gap-2 mb-2">
-                      <AlertCircle className="w-4 h-4 text-primary" />
-                      <label className="text-sm font-medium text-foreground">Verification Seed (optional)</label>
-                    </div>
-                    <p className="text-xs text-muted-foreground mb-3">
-                      Enter a seed from a previous distribution to verify its fairness. Leave empty for a new random distribution.
-                    </p>
-                    <Input
-                      type="number"
-                      placeholder="e.g. 1234567890"
-                      value={verifySeed}
-                      onChange={e => setVerifySeed(e.target.value)}
-                      className="font-mono"
-                    />
-                  </div>
                 </div>
               </motion.div>
             )}
@@ -353,24 +329,13 @@ const ToolSection = () => {
               <motion.div key="s4" variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.3 }}>
                 <div className="space-y-6">
                   {/* Seed */}
-                  <div className={`bg-card rounded-xl p-6 shadow-card border ${verifySeed.trim() ? "border-emerald-300 bg-emerald-50/50 dark:bg-emerald-950/20" : "border-border/50"} flex items-center justify-between`}>
+                  <div className="bg-card rounded-xl p-6 shadow-card border border-border/50 flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-foreground flex items-center gap-2">
-                        {verifySeed.trim() ? (
-                          <>
-                            <Check className="w-4 h-4 text-emerald-600" />
-                            Verified with Seed
-                          </>
-                        ) : (
-                          "Fairness Verification Seed"
-                        )}
-                      </p>
+                      <p className="text-sm font-medium text-foreground">Fairness Verification Seed</p>
                       <p className="text-2xl font-mono font-bold gradient-text">{seed}</p>
-                      {verifySeed.trim() && (
-                        <p className="text-xs text-emerald-600 mt-1">
-                          This distribution was reproduced using the provided seed — results are identical.
-                        </p>
-                      )}
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Share this seed so others can verify the distribution in the Verify section below.
+                      </p>
                     </div>
                     <Button variant="outline" size="sm" onClick={copySeed}>
                       <Copy className="w-4 h-4" />

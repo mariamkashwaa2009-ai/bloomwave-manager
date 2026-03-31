@@ -2,6 +2,7 @@ import { useRef } from "react";
 import HeroSection from "@/components/HeroSection";
 import StepsSection from "@/components/StepsSection";
 import ToolSection from "@/components/ToolSection";
+import VerificationSection from "@/components/VerificationSection";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import FooterSection from "@/components/FooterSection";
@@ -27,6 +28,7 @@ const Index = () => {
       <div ref={toolRef}>
         <ToolSection />
       </div>
+      <VerificationSection />
       <FAQSection />
       <CTASection onStart={scrollToTool} />
       <FooterSection />
