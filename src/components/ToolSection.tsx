@@ -110,14 +110,7 @@ const ToolSection = () => {
   };
 
   const distribute = () => {
-    const s = verifySeed.trim()
-      ? parseInt(verifySeed.trim())
-      : Math.floor(Math.random() * 2147483646) + 1;
-    
-    if (verifySeed.trim() && (isNaN(s) || s < 1)) {
-      setErrors(["Invalid seed. Please enter a positive number."]);
-      return;
-    }
+    const s = Math.floor(Math.random() * 2147483646) + 1;
     
     setSeed(s);
 
