@@ -150,7 +150,7 @@ const ToolSection = () => {
     setResults([]);
     setSeed(0);
     setErrors([]);
-    setVerifySeed("");
+    
   };
 
   const copySeed = () => {

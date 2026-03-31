@@ -28,6 +28,7 @@ const Index = () => {
       <div ref={toolRef}>
         <ToolSection />
       </div>
+      <VerificationSection />
       <FAQSection />
       <CTASection onStart={scrollToTool} />
       <FooterSection />
