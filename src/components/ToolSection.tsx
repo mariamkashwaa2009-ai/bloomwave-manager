@@ -53,6 +53,7 @@ const ToolSection = () => {
   const [results, setResults] = useState<WaveResult[]>([]);
   const [seed, setSeed] = useState(0);
   const [errors, setErrors] = useState<string[]>([]);
+  const [verifySeed, setVerifySeed] = useState("");
 
   const wavesNum = parseInt(waves) || 0;
   const bloomsNum = parseInt(blooms) || 0;
